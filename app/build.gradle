@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
 
 android {
     compileSdkVersion 28
@@ -8,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.simple_shop_aos"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -26,9 +28,16 @@ android {
 }
 
 ext {
+    arch_version = '2.2.0-alpha01'
     anko_version = '0.10.8'
     retrofit_version = '2.6.0'
     okhttp_version = '3.8.0'
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
@@ -67,4 +76,12 @@ dependencies {
     // OkHttp
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    // MVVM
+    implementation "androidx.lifecycle:lifecycle-extensions:$arch_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$arch_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$arch_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$arch_version"
+
+    implementation name: 'ankomvvm-0.1.0', ext: 'aar'
 }
