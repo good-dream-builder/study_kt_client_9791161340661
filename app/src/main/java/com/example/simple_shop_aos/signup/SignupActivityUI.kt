@@ -2,6 +2,7 @@ package com.example.simple_shop_aos.signup
 
 import android.graphics.Typeface
 import android.text.InputType
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
@@ -17,6 +18,11 @@ class SignupActivityUI(
     private val viewModel: SignupViewModel
 ) : AnkoComponent<SignupActivity> {
 
+    companion object {
+        val TAG = "SignupActivityUI"
+    }
+
+
     override fun createView(ui: AnkoContext<SignupActivity>): View =
         ui.linearLayout {
             orientation = LinearLayout.VERTICAL
@@ -31,6 +37,7 @@ class SignupActivityUI(
             }.lparams(width = matchParent) {
                 bottomMargin = dip(50)
             }
+            Log.d(TAG, "SignupActivityUI::createView::1")
 
             textInputLayout {
                 textInputEditText {
@@ -41,6 +48,7 @@ class SignupActivityUI(
             }.lparams(width = matchParent) {
                 bottomMargin = dip(20)
             }
+            Log.d(TAG, "SignupActivityUI::createView::2")
 
             textInputLayout {
                 textInputEditText {
@@ -51,6 +59,7 @@ class SignupActivityUI(
             }.lparams(width = matchParent) {
                 bottomMargin = dip(20)
             }
+            Log.d(TAG, "SignupActivityUI::createView::3")
 
             textInputLayout {
                 textInputEditText {
@@ -62,11 +71,12 @@ class SignupActivityUI(
             }.lparams(width = matchParent) {
                 bottomMargin = dip(20)
             }
+            Log.d(TAG, "SignupActivityUI::createView::4")
 
             button("회원가입") {
                 onClick { viewModel.signup() }
             }.lparams(width = matchParent)
-
+            Log.d(TAG, "SignupActivityUI::createView::5")
 
             // Parade -Minal
 
