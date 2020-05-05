@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import com.example.simple_shop_aos.api.ServiceApi
+import com.example.simple_shop_aos.signin.SigninActivity
 import com.example.simple_shop_aos.signup.SignupActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -30,7 +31,8 @@ class IntroActivity : Activity() {
         GlobalScope.launch {
             delay(1000) // 코루틴 내부에서 1초 쉼
             Log.d(TAG, "IntroActivity::onCreate::GlobalScope")
-            startActivity<SignupActivity>()
+//            startActivity<SignupActivity>()
+            startActivity<SigninActivity>()
             finish()    // 뒤로가기시 다시 IntroActivity로 돌아오지 못하도록 종료시킴
         }
 
