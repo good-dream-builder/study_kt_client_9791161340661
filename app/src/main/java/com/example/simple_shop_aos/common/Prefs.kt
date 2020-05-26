@@ -29,7 +29,7 @@ object Prefs {
     var userName
         get() = prefs.getString(USER_NAME, null)
         set(value) = prefs.edit()
-            .putString(USER_ID, value)
+            .putString(USER_NAME, value)
             .apply()
 
     var userId

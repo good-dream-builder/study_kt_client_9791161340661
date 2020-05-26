@@ -4,11 +4,18 @@ import com.example.simple_shop_aos.api.request.SigninRequest
 import com.example.simple_shop_aos.api.request.SigninResponse
 import com.example.simple_shop_aos.api.request.SignupRequest
 import com.example.simple_shop_aos.api.response.ApiResponse
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import com.example.simple_shop_aos.api.response.ProductImageUploadResponse
+import okhttp3.MultipartBody
+import retrofit2.http.*
 
 interface ServiceApi {
+
+    @Multipart
+    @POST("/api/v1/product_images")
+    suspend fun uploadProductImages(
+        @Part images: MultipartBody.Part
+    ): ApiResponse<ProductImageUploadResponse>
+
     @POST("/api/v1/signin")
     suspend fun signin(@Body signinRequest: SigninRequest): ApiResponse<SigninResponse>
 
@@ -17,6 +24,7 @@ interface ServiceApi {
 
     @GET("/api/v1/hello")
     suspend fun hello(): ApiResponse<String>
+
 
     companion object {
         val instance = ApiGenerator().generate(ServiceApi::class.java)

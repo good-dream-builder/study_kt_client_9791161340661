@@ -4,6 +4,8 @@ import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import com.example.simple_shop_aos.api.ServiceApi
+import com.example.simple_shop_aos.common.Prefs
+import com.example.simple_shop_aos.product.ProductMainActivity
 import com.example.simple_shop_aos.signin.SigninActivity
 import com.example.simple_shop_aos.signup.SignupActivity
 import kotlinx.coroutines.GlobalScope
@@ -25,14 +27,19 @@ class IntroActivity : Activity() {
 
         val ui = IntroActivityUI()
         ui.setContentView(this)
-        
+
         // 메인스레드에서 비동기 작업을 시작
         // 코루틴 블룩 내부에서 회원가입 화면으로 전환
         GlobalScope.launch {
             delay(1000) // 코루틴 내부에서 1초 쉼
             Log.d(TAG, "IntroActivity::onCreate::GlobalScope")
+            if (Prefs.token.isNullOrEmpty()) {
+                startActivity<SigninActivity>()
+            } else {
+                startActivity<ProductMainActivity>()
+            }
 //            startActivity<SignupActivity>()
-            startActivity<SigninActivity>()
+//            startActivity<SigninActivity>()
             finish()    // 뒤로가기시 다시 IntroActivity로 돌아오지 못하도록 종료시킴
         }
 
