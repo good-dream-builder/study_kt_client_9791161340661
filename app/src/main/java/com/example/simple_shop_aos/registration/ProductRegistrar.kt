@@ -1,0 +1,35 @@
+package com.example.simple_shop_aos.registration
+
+import com.example.simple_shop_aos.api.ServiceApi
+import com.example.simple_shop_aos.api.request.ProductRegistrationRequest
+import com.example.simple_shop_aos.api.response.ApiResponse
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.error
+import retrofit2.Response
+
+/**
+ * 상품 등록 역할
+ * - 요청 데이터를 검증하고 상품 등록 API를 호출하는 역할
+ * - 네트워크 요청이 일어나는 부분은 IO 스레드로 처리
+ */
+class ProductRegistrar : AnkoLogger {
+    suspend fun register(request: ProductRegistrationRequest) = when {
+        request.isNotValidName -> ApiResponse.error("상품명을 조건에 맞게 입력해주세요.")
+        request.isNotValidDescription -> ApiResponse.error("상품 설명을 조건에 맞게 입력해주세요.")
+        request.isNotValidPrice -> ApiResponse.error("가격을 조건에 맞게 입력해주세요.")
+        request.isNotValidCategoryId -> ApiResponse.error("카테고리 아이디를 선택해주세요.")
+        request.isNotValidImageIds -> ApiResponse.error("이미지를 한 개 이상 등록해주세요.")
+        else -> withContext(Dispatchers.IO) {
+            try {
+                ServiceApi.instance.registerProduct(request)
+            } catch (e: Exception) {
+                error("상품 등록 오류", e)
+                ApiResponse.error<Response<Void>>(
+                    "알 수 없는 오류가 발생했습니다."
+                )
+            }
+        }
+    }
+}

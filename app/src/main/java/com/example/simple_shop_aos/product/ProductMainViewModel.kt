@@ -1,11 +1,14 @@
 package com.example.simple_shop_aos.product
 
 import android.app.Application
+import android.content.Intent
+import com.example.simple_shop_aos.registration.ProductRegistartionActivity
 import net.codephobia.ankomvvm.lifecycle.BaseViewModel
 
 class ProductMainViewModel(app: Application) : BaseViewModel(app) {
     fun openRegistrationActivity() {
-        // todo 상품 등록 UI가 준비되면 해당 액티비티를 열도록 수정
-        toast("openRegistrationActivity")
+        startActivity<ProductRegistartionActivity> {
+            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+        }
     }
 }

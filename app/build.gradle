@@ -83,5 +83,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$arch_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$arch_version"
 
+    // Images
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+
     implementation name: 'ankomvvm-0.1.0', ext: 'aar'
 }
