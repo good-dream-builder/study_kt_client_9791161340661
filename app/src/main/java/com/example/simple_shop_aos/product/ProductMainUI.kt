@@ -8,17 +8,22 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.viewpager.widget.ViewPager
 import com.example.simple_shop_aos.R
 import com.example.simple_shop_aos.common.Prefs
 import com.example.simple_shop_aos.signin.SigninActivity
 import com.example.simple_shop_aos.view.borderBottom
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.tabs.TabLayout
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
 import org.jetbrains.anko.design.floatingActionButton
 import org.jetbrains.anko.design.navigationView
+import org.jetbrains.anko.design.themedTabLayout
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.support.v4._ViewPager
 import org.jetbrains.anko.support.v4.drawerLayout
+import org.jetbrains.anko.support.v4.viewPager
 
 class ProductMainUI(
     private val viewModel: ProductMainViewModel
@@ -28,6 +33,9 @@ class ProductMainUI(
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView //2
     lateinit var toolBar: Toolbar
+
+    lateinit var tabLayout: TabLayout
+    lateinit var viewPager: ViewPager
 
     override fun createView(ui: AnkoContext<ProductMainActivity>) =
         ui.drawerLayout {
@@ -44,9 +52,25 @@ class ProductMainUI(
                             .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
                     }.lparams(matchParent, wrapContent)
 
+                    tabLayout = themedTabLayout(
+                        R.style.Widget_MaterialComponents_TabLayout
+                    ) {
+                        bottomPadding = dip(1)
+                        tabMode= TabLayout.MODE_SCROLLABLE
+                        tabGravity= TabLayout.GRAVITY_FILL
+                        background= borderBottom(width = dip(1))
+                        lparams(matchParent, wrapContent)
+                    }
+
+                    viewPager = viewPager {
+                        id = View.generateViewId()
+                    }.lparams(matchParent, matchParent)
+
 //                view {
 //                    backgroundColor = Color.parseColor("#DDDDDD")
 //                }.lparams(matchParent, dip(1))
+
+
                 }.lparams(matchParent, matchParent)
 
 
