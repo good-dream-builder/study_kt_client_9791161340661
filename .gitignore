@@ -9,4 +9,5 @@
 .gradle/5.6.4/javaCompile/taskHistory.bin
 .gradle/buildOutputCleanup/buildOutputCleanup.lock
 .gradle/buildOutputCleanup/outputFiles.bin
+.idea/
 app/app.iml
