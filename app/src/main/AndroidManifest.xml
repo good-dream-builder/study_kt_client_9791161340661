@@ -27,6 +27,10 @@
         <activity
             android:name=".registration.ProductRegistartionActivity"
             android:theme="@style/Theme.AppCompat.Light" />
+        <activity
+            android:name=".product.detail.ProductDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light" />
+        <activity android:name=".product.search.ProductSearchActivity" />
     </application>
 
 </manifest>
