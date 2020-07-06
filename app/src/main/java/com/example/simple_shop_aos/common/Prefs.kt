@@ -8,6 +8,21 @@ object Prefs {
     private const val REFRESH_TOKEN = "refresh_token"
     private const val USER_NAME = "user_name"
     private const val USER_ID = "user_id"
+    private const val FCM_TOKEN = "fcm_token"
+    private const val NOTIFICATION_ID = "notification_id"
+
+    // 알림 표시를 위한 유니크 아이디
+    var notificationId
+    get() = prefs.getInt(NOTIFICATION_ID, 0)
+    set(value) = prefs.edit()
+        .putInt(NOTIFICATION_ID, value)
+        .apply()
+
+    var fcmToken
+        get() = prefs.getString(FCM_TOKEN, null)
+        set(value) = prefs.edit()
+            .putString(FCM_TOKEN, value)
+            .apply()
 
     val prefs by lazy {
         PreferenceManager

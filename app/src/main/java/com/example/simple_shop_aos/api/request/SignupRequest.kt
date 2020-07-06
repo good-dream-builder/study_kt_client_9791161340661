@@ -1,11 +1,13 @@
 package com.example.simple_shop_aos.api.request
 
 import android.util.Patterns
+import com.example.simple_shop_aos.common.Prefs
 
 class SignupRequest(
     val email: String?,
     val password: String?,
-    val name: String?
+    val name: String?,
+    val fcmToken: String? = Prefs.fcmToken
 ) {
     fun isNotValidEmail() =
         email.isNullOrBlank() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()
