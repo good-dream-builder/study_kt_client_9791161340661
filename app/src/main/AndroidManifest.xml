@@ -31,6 +31,9 @@
             android:name=".product.detail.ProductDetailActivity"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name=".product.search.ProductSearchActivity" />
+        <activity android:name=".inquiry.ProductInquiryActivity" />
+        <activity android:name=".inquiry.registration.InquiryRegistrationActivity" />
+        <activity android:name=".inquiry.myinquiry.MyInquiryActivity" />
 
         <service android:name=".fcm.MessaginService">
             <intent-filter>

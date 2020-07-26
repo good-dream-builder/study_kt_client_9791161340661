@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "254758176472",
+    "firebase_url": "https://simple-shop-aos.firebaseio.com",
+    "project_id": "simple-shop-aos",
+    "storage_bucket": "simple-shop-aos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254758176472:android:0057e36fe0ff2612c8b9ad",
+        "android_client_info": {
+          "package_name": "com.example.simple_shop_aos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254758176472-0idf53eah72r8h01oak1kbieavo5j1lp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.simple_shop_aos",
+            "certificate_hash": "4b72a741cd10bdd31d26c421fa6f73cfb2215bcf"
+          }
+        },
+        {
+          "client_id": "254758176472-06pqhg58nad2bj1ggsg8lqrl7a9dsa9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMHed107zwV0Xs_O3LQiSJ6UTTNkMbWK4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254758176472-06pqhg58nad2bj1ggsg8lqrl7a9dsa9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

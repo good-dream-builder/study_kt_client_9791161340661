@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.simple_shop_aos.api.ServiceApi
 import com.example.simple_shop_aos.api.response.ApiResponse
 import com.example.simple_shop_aos.api.response.ProductResponse
+import com.example.simple_shop_aos.inquiry.ProductInquiryActivity
 import com.example.simple_shop_aos.product.ProductStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,7 +17,7 @@ import java.text.NumberFormat
 import kotlin.Exception
 
 class ProductDetailViewModel(app: Application) : BaseViewModel(app) {
-    val productId: Long? = null
+    var productId: Long? = null
 
     val productName = MutableLiveData("-")
     val description = MutableLiveData("")
@@ -26,6 +27,7 @@ class ProductDetailViewModel(app: Application) : BaseViewModel(app) {
     // suspend 함수를 호출하기 때문에 코루틴으로 처리
     fun loadDetail(id: Long) = viewModelScope.launch(Dispatchers.Main) {
         try {
+            productId = id
             val response = getProduct(id)
             if (response.success && response.data != null) {
                 updateViewData(response.data)
@@ -57,7 +59,9 @@ class ProductDetailViewModel(app: Application) : BaseViewModel(app) {
 
     // 상품 문의
     fun openInquiryActivity() {
-        toast("상품문의 - productId = $productId")
+       startActivity<ProductInquiryActivity>{
+           putExtra(ProductInquiryActivity.PRODUCT_ID, productId)   // 1
+       }
     }
 
 }

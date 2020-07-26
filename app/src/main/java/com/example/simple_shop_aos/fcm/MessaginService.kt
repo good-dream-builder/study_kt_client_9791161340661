@@ -58,7 +58,6 @@ class MessaginService : FirebaseMessagingService(), AnkoLogger {
                 notify(NotificationId.generate(), builder.build())
             }
         }
-
     }
 
     private fun createNotificationChannelIfNeeded() {

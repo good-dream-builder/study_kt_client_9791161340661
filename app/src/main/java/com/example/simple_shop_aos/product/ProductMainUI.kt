@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager.widget.ViewPager
 import com.example.simple_shop_aos.R
 import com.example.simple_shop_aos.common.Prefs
+import com.example.simple_shop_aos.inquiry.myinquiry.MyInquiryActivity
 import com.example.simple_shop_aos.product.search.ProductSearchActivity
 import com.example.simple_shop_aos.signin.SigninActivity
 import com.example.simple_shop_aos.view.borderBottom
@@ -123,7 +124,7 @@ class ProductMainUI(
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             MENU_ID_INQUIRY -> {
-                viewModel.toast("내 문의")
+                viewModel.startActivity<MyInquiryActivity>()
             }
             MENU_ID_LOGOUT -> {
                 Prefs.token = null
